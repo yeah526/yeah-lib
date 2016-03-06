@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.yeah.lib.utils.LogUtil;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        LogUtil.logDebug(getClass(), "onCreate");
     }
 
     @Override
