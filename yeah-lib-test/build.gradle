@@ -13,10 +13,10 @@ android {
     }
     buildTypes {
         debug {
-            debuggable false
+            debuggable true
         }
         release {
-            debuggable true
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -29,7 +29,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
     /* 导入yeah-lib库的两种方式 */
-    compile project(':yeah-lib')
-    //本地导入yeah-lib库
-    //    compile 'com.yeah.lib:yeah-lib:0.0.1' //从jcenter网络导入yeah-lib库
+    compile project(':yeah-lib') //本地导入yeah-lib库
+//    compile 'com.yeah.lib:yeah-lib:0.0.2' //从jcenter网络导入yeah-lib库
 }

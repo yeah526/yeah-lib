@@ -5,34 +5,31 @@ import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
 /**
- * 日志工具类
+ * Created by heweiyan on 2016/3/6.
+ * <p/>
+ * Logging utility class.
  */
 public class LogUtil {
 
-    // 默认的logcat标志
+    // default logging tag
     private final static String DEFAULT_TAG = "yeahLib";
-    // 当前是否调试状态标志位
+    // flag that control whether output logging
     private static boolean IS_DEBUG = false;
 
-    /**
-     * 初始化
-     *
-     * @param context 上下文
-     */
     public static void init(Context context) {
         if (context == null) {
             return;
         }
 
         IS_DEBUG = (context.getApplicationInfo().flags
-                    & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+                & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
     }
 
     /**
-     * 打印Debug类型的日志
+     * Output Debug type logging.
      *
-     * @param cls 类，方便追踪该日志是在哪个类中打印出来的
-     * @param msg 要打印的信息
+     * @param cls The class where the logging output.
+     * @param msg Message that display on the logcat.
      */
     public static void logDebug(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -42,10 +39,10 @@ public class LogUtil {
     }
 
     /**
-     * 打印Info类型的日志
+     * Output Info type logging.
      *
-     * @param cls 类，方便追踪该日志是在哪个类中打印出来的
-     * @param msg 要打印的信息
+     * @param cls The class where the logging output.
+     * @param msg Message that display on the logcat.
      */
     public static void logInfo(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -55,10 +52,10 @@ public class LogUtil {
     }
 
     /**
-     * 打印Warn类型的日志
+     * Output Warn type logging.
      *
-     * @param cls 类，方便追踪该日志是在哪个类中打印出来的
-     * @param msg 要打印的信息
+     * @param cls The class where the logging output.
+     * @param msg Message that display on the logcat.
      */
     public static void logWarn(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -68,10 +65,10 @@ public class LogUtil {
     }
 
     /**
-     * 打印Error类型的日志
+     * Output Error type logging.
      *
-     * @param cls 类，方便追踪该日志是在哪个类中打印出来的
-     * @param msg 要打印的信息
+     * @param cls The class where the logging output.
+     * @param msg Message that display on the logcat.
      */
     public static void logError(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -81,12 +78,12 @@ public class LogUtil {
     }
 
     /**
-     * 获取格式化后的信息字符串，方便过滤信息
+     * Format messages to facilitate filtering
      *
-     * @param msg 格式化前的信息
-     * @return 格式化后的信息
+     * @param msg Original message.
+     * @return Fomatted message.
      */
     private static String getFormattedMsg(String msg) {
-        return ">>>>>> " + msg + " <<<<<<";
+        return "------ " + msg + " ------";
     }
 }
