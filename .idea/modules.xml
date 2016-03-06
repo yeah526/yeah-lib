@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/YeahLib.iml" filepath="$PROJECT_DIR$/YeahLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeah-lib/yeah-lib.iml" filepath="$PROJECT_DIR$/yeah-lib/yeah-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeah-lib-test/yeah-lib-test.iml" filepath="$PROJECT_DIR$/yeah-lib-test/yeah-lib-test.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+/* 上传至bintray下载中心所需信息 */
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'yeah-lib'
+
+    publishedGroupId = 'com.yeah.lib'
+    libraryName = 'YeahLibrary'
+    artifact = 'yeah-lib'
+
+    libraryDescription = 'A common android library'
+
+    siteUrl = 'https://github.com/yeah526/yeah-lib'
+    gitUrl = 'https://github.com/yeah526/yeah-lib'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'yeah'
+    developerName = 'yeah ho'
+    developerEmail = 'heweiyan526@163.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    //    compile 'com.android.support:appcompat-v7:23.2.0'
+}
+
+apply from: '/installv1.gradle'
+apply from: '/bintrayv1.gradle'
