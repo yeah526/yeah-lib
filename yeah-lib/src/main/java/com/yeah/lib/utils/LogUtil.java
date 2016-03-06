@@ -5,19 +5,19 @@ import android.content.pm.ApplicationInfo;
 import android.util.Log;
 
 /**
- * æ—¥å¿—å·¥å…·ç±»
+ * ÈÕÖ¾¹¤¾ßÀà
  */
 public class LogUtil {
 
-    // é»˜è®¤çš„logcatæ ‡å¿—
+    // Ä¬ÈÏµÄlogcat±êÖ¾
     private final static String DEFAULT_TAG = "yeahLib";
-    // å½“å‰æ˜¯å¦è°ƒè¯•çŠ¶æ€æ ‡å¿—ä½
+    // µ±Ç°ÊÇ·ñµ÷ÊÔ×´Ì¬±êÖ¾Î»
     private static boolean IS_DEBUG = false;
 
     /**
-     * åˆå§‹åŒ–
+     * ³õÊ¼»¯
      *
-     * @param context ä¸Šä¸‹æ–‡
+     * @param context ÉÏÏÂÎÄ
      */
     public static void init(Context context) {
         if (context == null) {
@@ -29,10 +29,10 @@ public class LogUtil {
     }
 
     /**
-     * æ‰“å°Debugç±»å‹çš„æ—¥å¿—
+     * ´òÓ¡DebugÀàĞÍµÄÈÕÖ¾
      *
-     * @param cls ç±»ï¼Œæ–¹ä¾¿è¿½è¸ªè¯¥æ—¥å¿—æ˜¯åœ¨å“ªä¸ªç±»ä¸­æ‰“å°å‡ºæ¥çš„
-     * @param msg è¦æ‰“å°çš„ä¿¡æ¯
+     * @param cls Àà£¬·½±ã×·×Ù¸ÃÈÕÖ¾ÊÇÔÚÄÄ¸öÀàÖĞ´òÓ¡³öÀ´µÄ
+     * @param msg Òª´òÓ¡µÄĞÅÏ¢
      */
     public static void logDebug(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -42,10 +42,10 @@ public class LogUtil {
     }
 
     /**
-     * æ‰“å°Infoç±»å‹çš„æ—¥å¿—
+     * ´òÓ¡InfoÀàĞÍµÄÈÕÖ¾
      *
-     * @param cls ç±»ï¼Œæ–¹ä¾¿è¿½è¸ªè¯¥æ—¥å¿—æ˜¯åœ¨å“ªä¸ªç±»ä¸­æ‰“å°å‡ºæ¥çš„
-     * @param msg è¦æ‰“å°çš„ä¿¡æ¯
+     * @param cls Àà£¬·½±ã×·×Ù¸ÃÈÕÖ¾ÊÇÔÚÄÄ¸öÀàÖĞ´òÓ¡³öÀ´µÄ
+     * @param msg Òª´òÓ¡µÄĞÅÏ¢
      */
     public static void logInfo(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -55,10 +55,10 @@ public class LogUtil {
     }
 
     /**
-     * æ‰“å°Warnç±»å‹çš„æ—¥å¿—
+     * ´òÓ¡WarnÀàĞÍµÄÈÕÖ¾
      *
-     * @param cls ç±»ï¼Œæ–¹ä¾¿è¿½è¸ªè¯¥æ—¥å¿—æ˜¯åœ¨å“ªä¸ªç±»ä¸­æ‰“å°å‡ºæ¥çš„
-     * @param msg è¦æ‰“å°çš„ä¿¡æ¯
+     * @param cls Àà£¬·½±ã×·×Ù¸ÃÈÕÖ¾ÊÇÔÚÄÄ¸öÀàÖĞ´òÓ¡³öÀ´µÄ
+     * @param msg Òª´òÓ¡µÄĞÅÏ¢
      */
     public static void logWarn(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -68,10 +68,10 @@ public class LogUtil {
     }
 
     /**
-     * æ‰“å°Errorç±»å‹çš„æ—¥å¿—
+     * ´òÓ¡ErrorÀàĞÍµÄÈÕÖ¾
      *
-     * @param cls ç±»ï¼Œæ–¹ä¾¿è¿½è¸ªè¯¥æ—¥å¿—æ˜¯åœ¨å“ªä¸ªç±»ä¸­æ‰“å°å‡ºæ¥çš„
-     * @param msg è¦æ‰“å°çš„ä¿¡æ¯
+     * @param cls Àà£¬·½±ã×·×Ù¸ÃÈÕÖ¾ÊÇÔÚÄÄ¸öÀàÖĞ´òÓ¡³öÀ´µÄ
+     * @param msg Òª´òÓ¡µÄĞÅÏ¢
      */
     public static void logError(Class<?> cls, String msg) {
         if (IS_DEBUG) {
@@ -81,10 +81,10 @@ public class LogUtil {
     }
 
     /**
-     * è·å–æ ¼å¼åŒ–åçš„ä¿¡æ¯å­—ç¬¦ä¸²ï¼Œæ–¹ä¾¿è¿‡æ»¤ä¿¡æ¯
+     * »ñÈ¡¸ñÊ½»¯ºóµÄĞÅÏ¢×Ö·û´®£¬·½±ã¹ıÂËĞÅÏ¢
      *
-     * @param msg æ ¼å¼åŒ–å‰çš„ä¿¡æ¯
-     * @return æ ¼å¼åŒ–åçš„ä¿¡æ¯
+     * @param msg ¸ñÊ½»¯Ç°µÄĞÅÏ¢
+     * @return ¸ñÊ½»¯ºóµÄĞÅÏ¢
      */
     private static String getFormattedMsg(String msg) {
         return ">>>>>> " + msg + " <<<<<<";

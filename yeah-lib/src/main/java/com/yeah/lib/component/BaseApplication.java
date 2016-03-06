@@ -11,13 +11,13 @@ import java.util.Stack;
 /**
  * Created by heweiyan on 2016/3/6.
  * <p/>
- * Applicationç»„ä»¶çš„æŠ½è±¡åŸºç±»
+ * Application×é¼şµÄ³éÏó»ùÀà
  */
 public abstract class BaseApplication extends Application {
 
-    // Applicationå®ä¾‹
+    // ApplicationÊµÀı
     private static BaseApplication application;
-    // æ‰€æœ‰æ­£åœ¨è¿è¡Œçš„Activitiesçš„å®ä¾‹
+    // ËùÓĞÕıÔÚÔËĞĞµÄActivitiesµÄÊµÀı
     private Stack<Activity> activityStack = new Stack<>();
 
     @Override
@@ -30,44 +30,44 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * åˆå§‹åŒ–å„ä¸ªå·¥å…·ç±»
+     * ³õÊ¼»¯¸÷¸ö¹¤¾ßÀà
      */
     private void initUtils() {
-        // åˆå§‹åŒ–æ—¥å¿—å·¥å…·ç±»
+        // ³õÊ¼»¯ÈÕÖ¾¹¤¾ßÀà
         LogUtil.init(this);
     }
 
     /**
-     * è·å–Applicationå®ä¾‹
+     * »ñÈ¡ApplicationÊµÀı
      *
-     * @return Applicationå®ä¾‹
+     * @return ApplicationÊµÀı
      */
     public static BaseApplication getApplication() {
         return application;
     }
 
     /**
-     * æ³¨å†ŒActivity
+     * ×¢²áActivity
      *
-     * @param activity è¦æ³¨å†Œçš„Activityå®ä¾‹
+     * @param activity Òª×¢²áµÄActivityÊµÀı
      */
     public void registerActivity(Activity activity) {
         activityStack.push(activity);
     }
 
     /**
-     * åæ³¨å†ŒActivity
+     * ·´×¢²áActivity
      *
-     * @param activity è¦åæ³¨å†Œçš„Activityå®ä¾‹
+     * @param activity Òª·´×¢²áµÄActivityÊµÀı
      */
     public void unregisterActivity(Activity activity) {
         activityStack.remove(activity);
     }
 
     /**
-     * è·å–å¤„äºæ ˆé¡¶çš„Acitivty
+     * »ñÈ¡´¦ÓÚÕ»¶¥µÄAcitivty
      *
-     * @return å¤„äºæ ˆé¡¶çš„Acitivtyå®ä¾‹ã€‚å¦‚æœActivityæ ˆä¸ºç©ºï¼Œé‚£ä¹ˆå°±è¿”å›nullã€‚
+     * @return ´¦ÓÚÕ»¶¥µÄAcitivtyÊµÀı¡£Èç¹ûActivityÕ»Îª¿Õ£¬ÄÇÃ´¾Í·µ»Ønull¡£
      */
     public Activity getTopActivity() {
         try {
@@ -78,17 +78,17 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * è·å–Activityæ ˆçš„å¤§å°
+     * »ñÈ¡ActivityÕ»µÄ´óĞ¡
      *
-     * @return Activityæ ˆä¸­çš„Activityæ•°é‡
+     * @return ActivityÕ»ÖĞµÄActivityÊıÁ¿
      */
     public int getActivitiesCount() {
         return activityStack.size();
     }
 
     /**
-     * æ‰“å°æ•´ä¸ªActivityæ ˆç»“æ„
-     * ç”¨äºDebug
+     * ´òÓ¡Õû¸öActivityÕ»½á¹¹
+     * ÓÃÓÚDebug
      */
     public void logActivityStack() {
         for (int i = activityStack.size() - 1; i >= 0; i--) {
@@ -97,12 +97,12 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * finishæ‰æ‰€æœ‰çš„Activities
+     * finishµôËùÓĞµÄActivities
      */
     public void finishAllActivities() {
-        // å› ä¸ºå¦‚æœç”¨activityStackå»è¿­ä»£finish Activityï¼Œåœ¨Activity onDestroyæ—¶ï¼Œåˆä¼šå¯¹activityStackè¿›è¡Œåˆ é™¤æ“ä½œï¼Œ
-        // è¿™æ—¶å°±ä¼šæŠ¥ConcurrentModificationExceptionå¼‚å¸¸ï¼Œå³åœ¨é›†åˆè¿­ä»£æ—¶æ˜¯ä¸å…è®¸å¯¹é›†åˆè¿›è¡Œåˆ é™¤æˆ–è€…æ·»åŠ æ“ä½œï¼Œ
-        // æ‰€ä»¥è¦å¤åˆ¶ä¸€ä¸ªé›†åˆï¼Œå¯¹è¿™ä¸ªå¤åˆ¶é›†åˆè¿›è¡Œè¿­ä»£æ“ä½œã€‚
+        // ÒòÎªÈç¹ûÓÃactivityStackÈ¥µü´úfinish Activity£¬ÔÚActivity onDestroyÊ±£¬ÓÖ»á¶ÔactivityStack½øĞĞÉ¾³ı²Ù×÷£¬
+        // ÕâÊ±¾Í»á±¨ConcurrentModificationExceptionÒì³££¬¼´ÔÚ¼¯ºÏµü´úÊ±ÊÇ²»ÔÊĞí¶Ô¼¯ºÏ½øĞĞÉ¾³ı»òÕßÌí¼Ó²Ù×÷£¬
+        // ËùÒÔÒª¸´ÖÆÒ»¸ö¼¯ºÏ£¬¶ÔÕâ¸ö¸´ÖÆ¼¯ºÏ½øĞĞµü´ú²Ù×÷¡£
         Stack<Activity> cloneActivityStack = (Stack<Activity>) activityStack.clone();
         for (Activity activity : cloneActivityStack) {
             activity.finish();
@@ -110,10 +110,10 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * å®Œå…¨é€€å‡ºåº”ç”¨
+     * ÍêÈ«ÍË³öÓ¦ÓÃ
      */
     public void exitApp() {
-        // finishæ‰æ‰€æœ‰çš„Activities
+        // finishµôËùÓĞµÄActivities
         finishAllActivities();
 
         System.exit(0);
@@ -121,7 +121,7 @@ public abstract class BaseApplication extends Application {
 
     @Override
     public void onTerminate() {
-        // finishæ‰æ‰€æœ‰çš„Activities
+        // finishµôËùÓĞµÄActivities
         finishAllActivities();
 
         super.onTerminate();

@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/yeah526/yeah-lib'
     gitUrl = 'https://github.com/yeah526/yeah-lib'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.2'
 
     developerId = 'yeah'
     developerName = 'yeah ho'
@@ -49,5 +49,6 @@ dependencies {
     //    compile 'com.android.support:appcompat-v7:23.2.0'
 }
 
+/* 上传至bintray下载中心所需脚本 */
 apply from: '/installv1.gradle'
 apply from: '/bintrayv1.gradle'

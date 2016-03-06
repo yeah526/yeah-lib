@@ -6,19 +6,19 @@ import android.widget.Toast;
 import com.yeah.lib.component.BaseApplication;
 
 /**
- * Toastå·¥å…·ç±»
+ * Toast¹¤¾ßÀà
  */
 public class ToastUtil {
 
-    // æœ€åä¸€æ¬¡æ˜¾ç¤ºçš„Toastå®ä¾‹
+    // ×îºóÒ»´ÎÏÔÊ¾µÄToastÊµÀı
     private static Toast mToast;
 
     /**
-     * æ˜¾ç¤ºToastæç¤º
-     * å¦‚æœä¼ é€’è¿›æ¥çš„contextå®ä¾‹ä¸æ˜¯å‰å°æ­£åœ¨æ˜¾ç¤ºçš„Activityï¼Œå°±ä¸ä¼šToastè¯¥æç¤º
+     * ÏÔÊ¾ToastÌáÊ¾
+     * Èç¹û´«µİ½øÀ´µÄcontextÊµÀı²»ÊÇÇ°Ì¨ÕıÔÚÏÔÊ¾µÄActivity£¬¾Í²»»áToast¸ÃÌáÊ¾
      *
-     * @param context ä¸Šä¸‹æ–‡å®ä¾‹
-     * @param msg     è¦Toastçš„ä¿¡æ¯
+     * @param context ÉÏÏÂÎÄÊµÀı
+     * @param msg     ÒªToastµÄĞÅÏ¢
      */
     public static void showMsg(Context context, String msg) {
         if (BaseApplication.getApplication().getTopActivity().equals(context)) {
@@ -27,20 +27,20 @@ public class ToastUtil {
     }
 
     /**
-     * æ˜¾ç¤ºToastæç¤º
+     * ÏÔÊ¾ToastÌáÊ¾
      *
-     * @param context ä¸Šä¸‹æ–‡å®ä¾‹
-     * @param msg     è¦Toastçš„ä¿¡æ¯
+     * @param context ÉÏÏÂÎÄÊµÀı
+     * @param msg     ÒªToastµÄĞÅÏ¢
      */
     public static void showMsgWithoutLimit(Context context, String msg) {
         if (context == null) {
             LogUtil.logError(ToastUtil.class,
-                    "method showMsgWithoutLimit()ï¼šcontext is null.");
+                    "method showMsgWithoutLimit()£ºcontext is null.");
             return;
         }
 
         if (mToast != null) {
-            // å¦‚æœä¸Šä¸€æ¬¡çš„Toastè¿˜æœªç»“æŸï¼Œé‚£ä¹ˆå…ˆç»“æŸä¸Šä¸€æ¬¡çš„Toast
+            // Èç¹ûÉÏÒ»´ÎµÄToast»¹Î´½áÊø£¬ÄÇÃ´ÏÈ½áÊøÉÏÒ»´ÎµÄToast
             mToast.cancel();
         }
         mToast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
