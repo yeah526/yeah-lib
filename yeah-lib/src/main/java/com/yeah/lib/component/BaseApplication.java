@@ -107,7 +107,9 @@ public abstract class BaseApplication extends Application {
         // So it needs a copy collection here.
         Stack<Activity> cloneActivityStack = (Stack<Activity>) activityStack.clone();
         for (Activity activity : cloneActivityStack) {
-            activity.finish();
+            if (activity != null && !activity.isFinishing()) {
+                activity.finish();
+            }
         }
     }
 

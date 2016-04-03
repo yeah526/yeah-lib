@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 
-/* 上传至bintray下载中心所需信息 */
+/* The bintray center information. */
 ext {
     bintrayRepo = 'maven'
     bintrayName = 'yeah-lib'
@@ -46,9 +46,15 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    //    compile 'com.android.support:appcompat-v7:23.2.0'
+
+    /* Android basic dependencies */
+    compile 'com.android.support:appcompat-v7:23.2.0'
+
+    /* Open source projects dependencies */
+    // MultiStateView: Android View that displays different content based on its state.
+    compile 'com.github.Kennyc1012:MultiStateView:1.1.1'
 }
 
-/* 上传至bintray下载中心所需脚本 */
+/* The scripts that help upload project to bintray center */
 apply from: '/installv1.gradle'
 apply from: '/bintrayv1.gradle'

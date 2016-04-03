@@ -1,9 +1,9 @@
-package com.yeah.lib.component.activity;
+package com.yeah.lib.component.ui;
 
 /**
  * Created by heweiyan on 2016/3/7.
  * <p/>
- * Navigation bar interface.
+ * Navigation bar interfaces.
  */
 public interface INavigationBar {
 

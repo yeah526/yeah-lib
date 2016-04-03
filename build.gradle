@@ -17,6 +17,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+
+        // The MultiStateView project's maven url.
+        maven { url 'https://jitpack.io' }
     }
 }
 
