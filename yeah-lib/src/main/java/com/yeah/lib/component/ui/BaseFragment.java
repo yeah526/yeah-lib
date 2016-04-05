@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kennyc.view.MultiStateView;
-
 /**
  * Created by heweiyan on 2016/3/20.
  * <p/>
@@ -26,16 +24,16 @@ public abstract class BaseFragment extends Fragment implements IFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getContentViewResId() > 0) {
             mRootView = inflater.inflate(getContentViewResId(), container, false);
+
+            View mMultiStateView = PageStateManager.findMultiStateView(mRootView);
+            if (mMultiStateView != null) {
+                pageStateManager = new PageStateManager(mMultiStateView);
+            }
         }
 
         initData();
         initViews();
         setViewListeners();
-
-        MultiStateView mMultiStateView = PageStateManager.findMultiStateView(mRootView);
-        if (mMultiStateView != null) {
-            pageStateManager = new PageStateManager(mMultiStateView);
-        }
 
         return mRootView;
     }
@@ -46,7 +44,7 @@ public abstract class BaseFragment extends Fragment implements IFragment {
     }
 
     @Override
-    public void setPageStateView(MultiStateView mPageStateView) {
+    public void setPageStateView(View mPageStateView) {
         if (pageStateManager == null) {
             pageStateManager = new PageStateManager(mPageStateView);
         } else {
@@ -56,21 +54,37 @@ public abstract class BaseFragment extends Fragment implements IFragment {
 
     @Override
     public void showContentView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showContentView();
     }
 
     @Override
     public void showLoadingView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showLoadingView();
     }
 
     @Override
     public void showEmptyView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showEmptyView();
     }
 
     @Override
     public void showErrorView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showErrorView();
     }
 }

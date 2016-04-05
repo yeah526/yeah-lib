@@ -15,8 +15,8 @@ public class PageStateManager implements IPageState {
     // multiple page state view
     private MultiStateView mPageStateView;
 
-    public PageStateManager(MultiStateView mPageStateView) {
-        this.mPageStateView = mPageStateView;
+    public PageStateManager(View mPageStateView) {
+        setPageStateView(mPageStateView);
     }
 
     /**
@@ -25,19 +25,19 @@ public class PageStateManager implements IPageState {
      * @param mRootView The root view that start to find the multiple state view.
      * @return The first multiple state view or null if there is no multiple state view in the root view.
      */
-    public static MultiStateView findMultiStateView(View mRootView) {
+    public static View findMultiStateView(View mRootView) {
         if (mRootView == null || !(mRootView instanceof ViewGroup)) {
             return null;
         }
 
         if (mRootView instanceof MultiStateView) {
-            return (MultiStateView) mRootView;
+            return mRootView;
         }
 
         for (int i = 0; i < ((ViewGroup) mRootView).getChildCount(); i++) {
             View view = ((ViewGroup) mRootView).getChildAt(i);
             if (view instanceof MultiStateView) {
-                return (MultiStateView) view;
+                return view;
             } else if (view instanceof ViewGroup) {
                 return findMultiStateView(view);
             }
@@ -47,14 +47,18 @@ public class PageStateManager implements IPageState {
     }
 
     @Override
-    public void setPageStateView(MultiStateView mPageStateView) {
-        this.mPageStateView = mPageStateView;
+    public void setPageStateView(View mPageStateView) {
+        if (!(mPageStateView instanceof MultiStateView)) {
+            throw new ClassCastException("The mPageStateView is not a MultiStateView.");
+        }
+
+        this.mPageStateView = (MultiStateView) mPageStateView;
     }
 
     @Override
     public void showContentView() {
         if (mPageStateView == null) {
-            return;
+            throw new NullPointerException("The page state view is null.");
         }
 
         mPageStateView.setViewState(MultiStateView.VIEW_STATE_CONTENT);
@@ -63,7 +67,7 @@ public class PageStateManager implements IPageState {
     @Override
     public void showLoadingView() {
         if (mPageStateView == null) {
-            return;
+            throw new NullPointerException("The page state view is null.");
         }
 
         mPageStateView.setViewState(MultiStateView.VIEW_STATE_LOADING);
@@ -72,7 +76,7 @@ public class PageStateManager implements IPageState {
     @Override
     public void showEmptyView() {
         if (mPageStateView == null) {
-            return;
+            throw new NullPointerException("The page state view is null.");
         }
 
         mPageStateView.setViewState(MultiStateView.VIEW_STATE_EMPTY);
@@ -81,7 +85,7 @@ public class PageStateManager implements IPageState {
     @Override
     public void showErrorView() {
         if (mPageStateView == null) {
-            return;
+            throw new NullPointerException("The page state view is null.");
         }
 
         mPageStateView.setViewState(MultiStateView.VIEW_STATE_ERROR);

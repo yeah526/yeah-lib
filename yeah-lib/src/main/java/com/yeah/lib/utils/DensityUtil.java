@@ -13,7 +13,7 @@ public class DensityUtil {
      *
      * @param context
      * @param pxValue The pixel value.
-     * @return
+     * @return The converted dp value.
      */
     public static int px2dp(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -25,7 +25,7 @@ public class DensityUtil {
      *
      * @param context
      * @param dpValue The dp value.
-     * @return
+     * @return The converted pixel value.
      */
     public static int dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -37,7 +37,7 @@ public class DensityUtil {
      *
      * @param context
      * @param pxValue The pixel value.
-     * @return
+     * @return The converted sp value.
      */
     public static int px2sp(Context context, float pxValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -49,7 +49,7 @@ public class DensityUtil {
      *
      * @param context
      * @param spValue The sp value.
-     * @return
+     * @return The converted pixel value.
      */
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;

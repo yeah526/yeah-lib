@@ -2,10 +2,11 @@ package com.yeah.lib.component.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 
-import com.kennyc.view.MultiStateView;
 import com.yeah.lib.component.BaseApplication;
+import com.yeah.lib.component.broadcastReceiver.NetworkWatchDogReceiver;
 
 /**
  * Created by heweiyan on 2016/3/6.
@@ -26,28 +27,21 @@ public abstract class BaseActivity extends Activity implements IActivity {
 
         if (getContentViewResId() > 0) {
             setContentView(getContentViewResId());
+
+            View mMultiStateView = PageStateManager.findMultiStateView(((ViewGroup) findViewById(android.R.id.content)).getChildAt(0));
+            if (mMultiStateView != null) {
+                pageStateManager = new PageStateManager(mMultiStateView);
+            }
         }
 
         initData();
+        initNavigationBar();
         initViews();
         setViewListeners();
-
-        MultiStateView mMultiStateView = PageStateManager.findMultiStateView(((ViewGroup) findViewById(android.R.id.content)).getChildAt(0));
-        if (mMultiStateView != null) {
-            pageStateManager = new PageStateManager(mMultiStateView);
-        }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // unregister activity to application
-        BaseApplication.getApplication().unregisterActivity(this);
-    }
-
-    @Override
-    public void setPageStateView(MultiStateView mPageStateView) {
+    public void setPageStateView(View mPageStateView) {
         if (pageStateManager == null) {
             pageStateManager = new PageStateManager(mPageStateView);
         } else {
@@ -62,21 +56,60 @@ public abstract class BaseActivity extends Activity implements IActivity {
 
     @Override
     public void showContentView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showContentView();
     }
 
     @Override
     public void showLoadingView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showLoadingView();
     }
 
     @Override
     public void showEmptyView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showEmptyView();
     }
 
     @Override
     public void showErrorView() {
+        if (pageStateManager == null) {
+            throw new NullPointerException("There is no multiple state view in your content view.");
+        }
+
         pageStateManager.showErrorView();
+    }
+
+    @Override
+    public void setOnNetworkChangeListener(NetworkWatchDogReceiver.OnNetworkChangeListener listener) {
+        registerReceiver(NetworkWatchDogReceiver.getInstance(), NetworkWatchDogReceiver.getIntentFilter());
+        NetworkWatchDogReceiver.getInstance().addOnNetworkChangeListener(this, listener);
+    }
+
+    @Override
+    public void unregiserOnNetworkChangeListener() {
+        if (NetworkWatchDogReceiver.getInstance().removeOnNetworkChangeListener(this) != null) {
+            unregisterReceiver(NetworkWatchDogReceiver.getInstance());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // unregister activity to application
+        BaseApplication.getApplication().unregisterActivity(this);
+        // unregister the network state change listener
+        unregiserOnNetworkChangeListener();
+
+        super.onDestroy();
     }
 }

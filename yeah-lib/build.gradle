@@ -12,7 +12,7 @@ ext {
     libraryDescription = 'A common android library'
 
     siteUrl = 'https://github.com/yeah526/yeah-lib'
-    gitUrl = 'https://github.com/yeah526/yeah-lib'
+    gitUrl = 'https://github.com/yeah526/yeah-lib.git'
 
     libraryVersion = '0.0.2'
 

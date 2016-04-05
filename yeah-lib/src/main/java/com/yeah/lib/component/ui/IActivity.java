@@ -5,5 +5,5 @@ package com.yeah.lib.component.ui;
  * <p/>
  * Activity base interfaces.
  */
-public interface IActivity extends INavigationBar, IPageInitialization, IPageState {
+public interface IActivity extends IPageInitialization, INavigationBar, IPageState, INetworkState {
 }

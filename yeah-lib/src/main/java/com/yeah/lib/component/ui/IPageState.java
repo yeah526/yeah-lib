@@ -1,6 +1,6 @@
 package com.yeah.lib.component.ui;
 
-import com.kennyc.view.MultiStateView;
+import android.view.View;
 
 /**
  * Created by heweiyan on 2016/3/15.
@@ -14,7 +14,7 @@ public interface IPageState {
      *
      * @param mPageStateView The specified multiple page state view.
      */
-    void setPageStateView(MultiStateView mPageStateView);
+    void setPageStateView(View mPageStateView);
 
     /**
      * Show the content view.
