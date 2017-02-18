@@ -5,7 +5,6 @@ import android.app.Application;
 
 import com.yeah.lib.utils.LogUtil;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -72,11 +71,11 @@ public abstract class BaseApplication extends Application {
      * @return The top activity.
      */
     public Activity getTopActivity() {
-        try {
-            return activityStack.peek();
-        } catch (EmptyStackException e) {
+        if (activityStack.size() <= 0) {
             return null;
         }
+
+        return activityStack.peek();
     }
 
     /**

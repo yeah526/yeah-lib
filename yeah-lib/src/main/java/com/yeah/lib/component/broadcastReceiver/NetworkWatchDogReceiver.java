@@ -23,12 +23,19 @@ public class NetworkWatchDogReceiver extends BaseBroadcastReceiver {
      */
     public interface OnNetworkChangeListener {
         /**
-         * Called when network changed.
+         * Called when network connection changed.
+         *
+         * @param isConnected {@code true} if network connectivity exists, {@code false} otherwise.
+         */
+        void onNetworkConnectionChange(boolean isConnected);
+
+        /**
+         * Called when network type changed.
          *
          * @param networkInfo The current network information or
          *                    {@code null} if WIFI and mobile data connection is not active.
          */
-        void onNetworkChange(NetworkInfo networkInfo);
+        void onNetworkTypeChange(NetworkInfo networkInfo);
     }
 
     private NetworkWatchDogReceiver() {
@@ -102,17 +109,30 @@ public class NetworkWatchDogReceiver extends BaseBroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         boolean isLastConnected = false;
-        if (lastNetworkInfo != null && lastNetworkInfo.isConnected()) {
-            isLastConnected = true;
+        int lastNetworkType = -1;
+        if (lastNetworkInfo != null) {
+            if (lastNetworkInfo.isConnected()) {
+                isLastConnected = true;
+            }
+            lastNetworkType = lastNetworkInfo.getType();
         }
         boolean isCurrentConnected = false;
-        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
-            isCurrentConnected = true;
+        int currentNetworkType = -1;
+        if (activeNetworkInfo != null) {
+            if (activeNetworkInfo.isConnected()) {
+                isCurrentConnected = true;
+            }
+            currentNetworkType = activeNetworkInfo.getType();
         }
 
         if (isLastConnected != isCurrentConnected) {
-            for (Object key : listeners.keySet()) {
-                listeners.get(key).onNetworkChange(activeNetworkInfo);
+            for (Map.Entry<Object, OnNetworkChangeListener> entry : listeners.entrySet()) {
+                entry.getValue().onNetworkConnectionChange(isCurrentConnected);
+            }
+        }
+        if (lastNetworkType != currentNetworkType) {
+            for (Map.Entry<Object, OnNetworkChangeListener> entry : listeners.entrySet()) {
+                entry.getValue().onNetworkTypeChange(activeNetworkInfo);
             }
         }
 
