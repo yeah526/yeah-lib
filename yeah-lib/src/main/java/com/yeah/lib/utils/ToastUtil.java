@@ -1,5 +1,6 @@
 package com.yeah.lib.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -22,9 +23,12 @@ public class ToastUtil {
      * @param msg     Message that toast.
      */
     public static void showMsg(Context context, String msg) {
-        if (BaseApplication.getApplication().getTopActivity().equals(context)) {
-            showMsgWithoutLimit(context, msg);
+        Activity topActivity = BaseApplication.getApplication().getTopActivity();
+        if (topActivity == null || !topActivity.equals(context)) {
+            return;
         }
+
+        showMsgWithoutLimit(context, msg);
     }
 
     /**
@@ -35,9 +39,7 @@ public class ToastUtil {
      */
     public static void showMsgWithoutLimit(Context context, String msg) {
         if (context == null) {
-            LogUtil.logError(ToastUtil.class,
-                    "method showMsgWithoutLimit(): context is null.");
-            return;
+            throw new NullPointerException("Context is null.");
         }
 
         if (mToast != null) {
