@@ -30,17 +30,11 @@ public abstract class BaseFragment extends Fragment implements IFragment {
                 pageStateManager = new PageStateManager(mMultiStateView);
             }
         }
-
-        return mRootView;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         initData();
         initViews();
         setViewListeners();
+
+        return mRootView;
     }
 
     @Override
