@@ -4,7 +4,7 @@ import com.yeah.lib.component.broadcastReceiver.NetworkWatchDogReceiver;
 
 /**
  * Created by heweiyan on 2016/4/5.
- * <p/>
+ *
  * Network state interfaces.
  */
 public interface INetworkState {

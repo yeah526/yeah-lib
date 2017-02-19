@@ -4,7 +4,7 @@ import android.view.View;
 
 /**
  * Created by heweiyan on 2016/3/15.
- * <p/>
+ *
  * Page state operation interfaces.
  */
 public interface IPageState {

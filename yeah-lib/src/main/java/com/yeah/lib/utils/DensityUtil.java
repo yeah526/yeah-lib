@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * Created by heweiyan on 2016/3/21.
- * <p/>
+ *
  * Density utility class.
  */
 public class DensityUtil {

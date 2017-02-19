@@ -10,7 +10,7 @@ import com.yeah.lib.component.broadcastReceiver.NetworkWatchDogReceiver;
 
 /**
  * Created by heweiyan on 2016/3/6.
- * <p/>
+ *
  * Base activity class.
  */
 public abstract class BaseActivity extends Activity implements IActivity {

@@ -7,7 +7,7 @@ import com.kennyc.view.MultiStateView;
 
 /**
  * Created by heweiyan on 2016/3/16.
- * <p/>
+ *
  * Provides methods to manage the page state.
  */
 public class PageStateManager implements IPageState {

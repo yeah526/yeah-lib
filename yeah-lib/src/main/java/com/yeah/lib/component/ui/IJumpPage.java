@@ -4,7 +4,7 @@ import android.content.Intent;
 
 /**
  * Created by heweiyan on 2016/3/19.
- * <p/>
+ *
  * Jump page interfaces.
  */
 public interface IJumpPage {
@@ -29,7 +29,7 @@ public interface IJumpPage {
      * Jump to the target activity.
      *
      * @param targetAcvitityClass Target activity class.
-     * @param requestCode         If >= 0, this code will be returned in onActivityResult() when the activity exits.
+     * @param requestCode         If more than 0 OR equals 0, this code will be returned in onActivityResult() when the activity exits.
      * @param isShowAnim          Whether show jump animation.
      */
     void jumpToActivity(Class<?> targetAcvitityClass, int requestCode, boolean isShowAnim);
@@ -38,7 +38,7 @@ public interface IJumpPage {
      * Jump to the target activity.
      *
      * @param intent      The intent to jump to the activity.
-     * @param requestCode If >= 0, this code will be returned in onActivityResult() when the activity exits.
+     * @param requestCode If more than 0 OR equals 0, this code will be returned in onActivityResult() when the activity exits.
      * @param isShowAnim  Whether show jump animation.
      */
     void jumpToActivity(Intent intent, int requestCode, boolean isShowAnim);

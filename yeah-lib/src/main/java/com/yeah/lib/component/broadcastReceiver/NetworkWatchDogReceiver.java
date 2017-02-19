@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * Created by heweiyan on 2016/4/3.
- * <p/>
+ *
  * Monitor network status broadcast receiver.
  */
 public class NetworkWatchDogReceiver extends BaseBroadcastReceiver {

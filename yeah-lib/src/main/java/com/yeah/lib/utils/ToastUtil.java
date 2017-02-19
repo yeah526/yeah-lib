@@ -8,7 +8,7 @@ import com.yeah.lib.component.BaseApplication;
 
 /**
  * Created by heweiyan on 2016/3/6.
- * <p/>
+ *
  * Toast utility class.
  */
 public class ToastUtil {

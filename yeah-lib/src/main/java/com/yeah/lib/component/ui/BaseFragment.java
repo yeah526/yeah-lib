@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 /**
  * Created by heweiyan on 2016/3/20.
- * <p/>
+ *
  * Base fragment class.
  */
 public abstract class BaseFragment extends Fragment implements IFragment {
@@ -31,11 +31,16 @@ public abstract class BaseFragment extends Fragment implements IFragment {
             }
         }
 
+        return mRootView;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         initData();
         initViews();
         setViewListeners();
-
-        return mRootView;
     }
 
     @Override

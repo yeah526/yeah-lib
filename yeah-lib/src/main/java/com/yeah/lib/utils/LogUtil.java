@@ -6,7 +6,7 @@ import android.util.Log;
 
 /**
  * Created by heweiyan on 2016/3/6.
- * <p/>
+ *
  * Logging utility class.
  */
 public class LogUtil {

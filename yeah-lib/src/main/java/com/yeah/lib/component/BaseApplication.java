@@ -9,7 +9,7 @@ import java.util.Stack;
 
 /**
  * Created by heweiyan on 2016/3/6.
- * <p/>
+ *
  * Base Application class.
  */
 public abstract class BaseApplication extends Application {
@@ -37,7 +37,7 @@ public abstract class BaseApplication extends Application {
     }
 
     /**
-     * Get application instance．
+     * Get application instance.
      *
      * @return Application instance.
      */
