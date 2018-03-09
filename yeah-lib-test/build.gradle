@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "26.0.2"
 
     defaultConfig {
         applicationId "com.yeah.lib.test"
@@ -10,10 +10,6 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-//        generatedDensities = []
-    }
-    aaptOptions {
-        additionalParameters "--no-version-vectors"
     }
 
     buildTypes {
@@ -31,9 +27,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
+    /* Android basic dependencies */
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
-    /* 导入yeah-lib库的两种方式 */
-    compile project(':yeah-lib') //本地导入yeah-lib库
-//    compile 'com.yeah.lib:yeah-lib:0.0.2' //从jcenter网络导入yeah-lib库
+
+    /* Two ways to import yeah-lib library */
+    compile project(':yeah-lib') //Import from local
+//    compile 'com.yeah.lib:yeah-lib:0.0.2' //Import from internet
 }
